@@ -69,7 +69,7 @@ resource "linode_instance" "miner2" {
 
 
 resource "linode_instance" "miner3" {
-  label           = "miner1"
+  label           = "miner3"
   image           = "linode/Ubuntu25.10"
   region          = var.region[2]
   type            = var.instances[2]
