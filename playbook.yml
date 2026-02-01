@@ -1,0 +1,10 @@
+- name: loading monero in the mining network
+  hosts: networkmining
+  become: true
+  tasks:
+    - name: getting xmrig from github
+      ansible.builtin.git:
+        repo: https://github.com/FrancescoDiSalesGithub/xmrig-quick-compilation
+        dest: /tmp
+    - name: installing xmrig
+      ansible.builtin.command: "bash /tmp/xmrig-quick-compilation/Upload.sh"
