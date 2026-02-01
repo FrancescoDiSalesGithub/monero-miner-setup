@@ -25,6 +25,12 @@ variable "instances" {
 
 }
 
+variable "region" {
+
+  type = list(string)
+
+}
+
 provider "linode" {
   # Configuration options
   token = var.tokenlinode
@@ -35,7 +41,7 @@ provider "linode" {
 resource "linode_instance" "miner1" {
   label           = "miner1"
   image           = "linode/Ubuntu25.10"
-  region          = var.region
+  region          = var.region[0]
   type            = var.instances[0]
 
   root_pass       = var.passwords[0]
@@ -49,7 +55,7 @@ resource "linode_instance" "miner1" {
 resource "linode_instance" "miner2" {
   label           = "miner2"
   image           = "linode/Ubuntu25.10"
-  region          = var.region
+  region          = var.region[1]
   type            = var.instances[1]
 
   root_pass       = var.passwords[1]
@@ -65,7 +71,7 @@ resource "linode_instance" "miner2" {
 resource "linode_instance" "miner3" {
   label           = "miner1"
   image           = "linode/Ubuntu25.10"
-  region          = var.region
+  region          = var.region[2]
   type            = var.instances[2]
 
   root_pass       = var.passwords[2]
